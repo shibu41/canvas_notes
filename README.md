@@ -1,20 +1,35 @@
-# React + Vite
+# A4 Canvas Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based visual canvas editor that allows you to create, arrange, and export A4-sized documents with images, code snippets, and text blocks.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📄 **A4 Canvas** - Standard A4 dimensions (794x1123px) with dynamic height
+- 🖼️ **Image Support** - Upload images or paste directly from clipboard (Ctrl+V)
+- 💻 **Code Blocks** - Add syntax-highlighted code snippets with auto-resize
+- ✏️ **Text Blocks** - Editable text elements with custom styling
+- 🎯 **Drag & Drop** - Move elements freely across the canvas
+- 🔧 **Resize Handles** - 8-point resize controls for all elements
+- 📥 **PDF Export** - Print or save as PDF with one click
+- 🗑️ **Element Management** - Delete individual elements or clear entire canvas
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Tailwind CSS
+- Lucide React Icons
 
+## Usage
 
-## App Usage
-    Simply clone the template from the github repo and then do:
-    `cd react_tailwindcss_template`
-    `npm i`
-    to install all the dependencies.
-    Rename the project(if you want) to your choice and voila!!!
+1. Click "Add Image" to upload images or paste directly (Ctrl+V)
+2. Add code blocks or text elements using toolbar buttons
+3. Drag elements to reposition them
+4. Use resize handles to adjust element dimensions
+5. Click "Export PDF" to save your canvas
+
+## Installation
+```bash
+pnpm install
+pnpm run dev
+```
+Works same for npm
