@@ -148,11 +148,18 @@ function A4Canvas() {
   };
 
   const handleMouseDown = (e, id) => {
+    e.stopPropagation();
     startDrag(e, id, setSelectedId);
   };
 
   const handleResizeStart = (e, id, handle) => {
     startResize(e, id, handle, setSelectedId);
+  };
+
+  const handleCanvasClick = (e) => {
+    if (e.target === canvasRef.current || e.target.id === 'canvas-print') {
+      setSelectedId(null);
+    }
   };
 
   return (
@@ -202,6 +209,7 @@ function A4Canvas() {
         <div
           id="canvas-print"
           ref={canvasRef}
+          onClick={handleCanvasClick}
           className="relative bg-white shadow-2xl ml-auto overflow-hidden rounded-lg"
           style={{
             width: `${A4_WIDTH}px`,
