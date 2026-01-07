@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useCanvasElements } from "../hooks/useCanvasElements";
 import { useDragAndDrop } from "../hooks/useDragAndDrop";
 import { A4_WIDTH } from "../utils/constants";
@@ -11,6 +11,7 @@ import {
 import { Toolbar } from "./Toolbar";
 import { EmptyCanvas } from "./EmptyCanvas";
 import { CanvasElement } from "./CanvasElement";
+import { Dialog } from "./Dialog";
 
 function A4Canvas() {
   const {
@@ -30,6 +31,8 @@ function A4Canvas() {
     canvasRef,
     A4_WIDTH
   );
+
+  const [showDialog, setShowDialog] = useState(false);
 
   const { isResizing, startResize, handleResize, endResize } =
     useResize(A4_WIDTH);
@@ -128,10 +131,7 @@ function A4Canvas() {
   };
 
   const handleClearAll = () => {
-    if (confirm('Are you sure you want to remove all elements in the canvas?\nThis action is permanent and cannot be undone'))
-      deleteAllElements();
-    else
-      return;
+    setShowDialog(true)
   }
 
   const handleMouseMove = (e) => {
@@ -234,6 +234,17 @@ function A4Canvas() {
 
           {elements.length === 0 && <EmptyCanvas />}
         </div>
+
+        <Dialog
+          isOpen={showDialog}
+          onClose={() => setShowDialog(false)}
+          title="Delete all Elements"
+          message="Are you sure you want to remove all elements in the canvas? This action is permanent and cannot be undone."
+          onConfirm={deleteAllElements}
+          confirmText="Delete All"
+          cancelText="Cancel"
+          variant="danger"
+        />
       </div>
 
     </>
