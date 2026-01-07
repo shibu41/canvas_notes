@@ -23,6 +23,10 @@ export const useCanvasElements = () => {
     return elements.find((el) => el.id === selectedId);
   };
 
+  const deleteAllElements = () => {
+    setElements([])
+  }
+
   return {
     elements,
     selectedId,
@@ -30,6 +34,7 @@ export const useCanvasElements = () => {
     addElement,
     updateElement,
     deleteElement,
+    deleteAllElements,
     getSelectedElement,
   };
 };

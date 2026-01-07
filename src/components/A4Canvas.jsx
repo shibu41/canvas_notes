@@ -20,6 +20,7 @@ function A4Canvas() {
     addElement,
     updateElement,
     deleteElement,
+    deleteAllElements
   } = useCanvasElements();
 
   const canvasRef = useRef(null);
@@ -126,6 +127,13 @@ function A4Canvas() {
     }, 100);
   };
 
+  const handleClearAll = () => {
+    if (confirm('Are you sure you want to remove all elements in the canvas?\nThis action is permanent and cannot be undone'))
+      deleteAllElements();
+    else
+      return;
+  }
+
   const handleMouseMove = (e) => {
     if (!isResizing) {
       handleDrag(e, selectedId, elements, updateElement);
@@ -183,12 +191,12 @@ function A4Canvas() {
       <div className="flex bg-gray-100 p-8 overflow-y-auto">
 
         <Toolbar
-          className=""
           onAddImage={handleAddImage}
           onAddCode={handleAddCode}
           onAddText={handleAddText}
           onExportPDF={handleExportPDF}
           fileInputRef={fileInputRef}
+          deleteAllElements={handleClearAll}
         />
 
         <div
