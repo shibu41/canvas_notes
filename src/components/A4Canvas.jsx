@@ -180,45 +180,46 @@ function A4Canvas() {
         }
       `}</style>
 
-      <div className="min-h-screen bg-gray-100 p-8">
-        <div className="max-w-6xl mx-auto">
-          <Toolbar
-            onAddImage={handleAddImage}
-            onAddCode={handleAddCode}
-            onAddText={handleAddText}
-            onExportPDF={handleExportPDF}
-            fileInputRef={fileInputRef}
-          />
+      <div className="flex bg-gray-100 p-8 overflow-y-auto">
 
-          <div
-            id="canvas-print"
-            ref={canvasRef}
-            className="relative bg-white shadow-2xl mx-auto overflow-hidden"
-            style={{
-              width: `${A4_WIDTH}px`,
-              height: `${calculateCanvasHeight(elements)}px`,
-            }}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onPaste={handlePaste}
-            tabIndex={0}
-          >
-            {elements.map((element) => (
-              <CanvasElement
-                key={element.id}
-                element={element}
-                isSelected={selectedId === element.id}
-                onMouseDown={(e) => handleMouseDown(e, element.id)}
-                onDelete={deleteElement}
-                onResizeStart={handleResizeStart}
-                onUpdateContent={handleUpdateContent}
-              />
-            ))}
+        <Toolbar
+          className=""
+          onAddImage={handleAddImage}
+          onAddCode={handleAddCode}
+          onAddText={handleAddText}
+          onExportPDF={handleExportPDF}
+          fileInputRef={fileInputRef}
+        />
 
-            {elements.length === 0 && <EmptyCanvas />}
-          </div>
+        <div
+          id="canvas-print"
+          ref={canvasRef}
+          className="relative bg-white shadow-2xl ml-auto overflow-hidden rounded-lg"
+          style={{
+            width: `${A4_WIDTH}px`,
+            height: `${calculateCanvasHeight(elements)}px`,
+          }}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onPaste={handlePaste}
+          tabIndex={0}
+        >
+          {elements.map((element) => (
+            <CanvasElement
+              key={element.id}
+              element={element}
+              isSelected={selectedId === element.id}
+              onMouseDown={(e) => handleMouseDown(e, element.id)}
+              onDelete={deleteElement}
+              onResizeStart={handleResizeStart}
+              onUpdateContent={handleUpdateContent}
+            />
+          ))}
+
+          {elements.length === 0 && <EmptyCanvas />}
         </div>
       </div>
+
     </>
   );
 }

@@ -7,13 +7,13 @@ export const Toolbar = ({
   onExportPDF,
   fileInputRef,
 }) => (
-  <div className="bg-white rounded-lg shadow-lg p-6 mb-4">
+  <div className="bg-white rounded-lg shadow-lg p-6 mb-4 max-h-fit fixed top-[13vh]">
     <h1 className="text-2xl font-bold mb-4">A4 Canvas Editor</h1>
 
-    <div className="flex gap-2 mb-4">
+    <div className="flex flex-col gap-2 mb-4">
       <button
         onClick={() => fileInputRef.current.click()}
-        className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="flex items-center w-35 gap-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mr-auto"
       >
         <Image size={20} />
         Add Image
@@ -28,7 +28,7 @@ export const Toolbar = ({
 
       <button
         onClick={onAddCode}
-        className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+        className="flex items-center w-35 gap-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-auto"
       >
         <Code size={20} />
         Add Code
@@ -36,7 +36,7 @@ export const Toolbar = ({
 
       <button
         onClick={onAddText}
-        className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
+        className="flex items-center w-35 gap-2 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 mr-auto"
       >
         <Type size={20} />
         Add Text
@@ -44,16 +44,19 @@ export const Toolbar = ({
 
       <button
         onClick={onExportPDF}
-        className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 ml-auto"
+        className="flex items-center w-35 gap-2 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 mr-auto"
       >
         <Download size={20} />
         Export PDF
       </button>
     </div>
 
-    <p className="text-sm text-gray-600 mb-4">
-      Tip: Paste images (Ctrl+V) • Drag to move • Drag handles to resize •
-      Export to PDF
-    </p>
+    <div className="text-sm text-gray-600 mb-4">
+      Tips:
+      <p>• Paste images (Ctrl+V)</p>
+      <p>• Drag to move </p>
+      <p>• Drag handles to resize</p>
+      <p>• Export to PDF</p>
+    </div>
   </div>
 );
